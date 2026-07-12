@@ -66,13 +66,12 @@ body {
   padding: 6px;
 }
 
-/* Onde o mundo 3D é desenhado.
-   A "aspect-ratio" segura o formato 480x560: a cena cresce até encostar
-   na borda de cima ou dos lados, o que vier primeiro, e nunca entorta. */
+/* Onde o mundo 3D é desenhado: preenche toda a área do jogo.
+   Não precisa segurar a proporção como nos outros jogos, porque a câmera 3D
+   se ajusta sozinha ao formato da tela (veja ajustarTamanhoDaCena no game.js). */
 #cena3d {
+  width: 100%;
   height: 100%;
-  aspect-ratio: 480 / 560;
-  max-width: 100%;
 
   border: 3px solid white;
   border-radius: 8px;
@@ -83,11 +82,10 @@ body {
   touch-action: none;
 }
 
-/* O desenho 3D estica para preencher a caixa acima */
+/* O tamanho do canvas 3D quem cuida é o game.js (função ajustarTamanhoDaCena),
+   porque o Three.js precisa saber o tamanho para desenhar sem borrar. */
 #cena3d canvas {
   display: block;
-  width: 100%;
-  height: 100%;
 }
 
 /* --- Tela de fim de jogo: um aviso POR CIMA do jogo --- */

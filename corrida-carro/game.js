@@ -47,9 +47,10 @@ function ajustarTamanhoDaCena() {
   const altura = container.clientHeight;
   if (largura === 0 || altura === 0) return;
 
-  // O "false" no final é para o Three.js não mexer no CSS: quem manda no
-  // tamanho na tela é a folha de estilo.
-  renderer.setSize(largura, altura, false);
+  // O Three.js escreve o tamanho direto no estilo do canvas. Se a gente pedir
+  // para ele NÃO fazer isso, sobra o tamanho antigo (480x560) grudado lá e o
+  // desenho fica pequeno num canto. Então deixamos ele mesmo ajustar tudo.
+  renderer.setSize(largura, altura);
 
   camera.aspect = largura / altura;
   camera.updateProjectionMatrix();

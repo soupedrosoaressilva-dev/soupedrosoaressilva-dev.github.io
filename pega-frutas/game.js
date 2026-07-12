@@ -174,7 +174,7 @@ canvas.addEventListener("touchstart", iniciarMusicaDeFundo, { once: true });
 // --- DIFICULDADE CRESCENTE ---
 // Quanto mais pontos, mais rápido as frutas caem (até um limite).
 function velocidadeAtual() {
-  return Math.min(2.5, 0.75 + pontos * 0.015);
+  return Math.min(5, 1.8 + pontos * 0.03);
 }
 
 // Quanto mais pontos, menor o tempo entre um item e outro (até um limite).
