@@ -331,6 +331,38 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+// --- Controles de toque (celular) ---
+// A estrada tem 3 faixas. A gente divide a tela em 3 pedaços: se o dedo
+// está no pedaço da esquerda, o carro vai para a faixa da esquerda, e assim
+// por diante. Como isso roda enquanto o dedo arrasta, o carro acompanha ele.
+function moverCarroComODedo(evento) {
+  evento.preventDefault(); // impede a página de rolar enquanto você joga
+  if (!jogando) return;
+
+  const dedo = evento.touches[0];
+  const area = container.getBoundingClientRect();
+
+  // De 0 (bem na esquerda da tela) até 1 (bem na direita)
+  const fracao = (dedo.clientX - area.left) / area.width;
+
+  // Transforma esse 0 a 1 em uma faixa: 0, 1 ou 2
+  let faixaDoDedo = Math.floor(fracao * FAIXAS);
+  if (faixaDoDedo < 0) faixaDoDedo = 0;
+  if (faixaDoDedo > FAIXAS - 1) faixaDoDedo = FAIXAS - 1;
+
+  // Só faz barulho quando o carro realmente troca de faixa
+  if (faixaDoDedo !== faixaAtual) {
+    faixaAtual = faixaDoDedo;
+    tocarClique();
+  }
+}
+
+container.addEventListener("touchstart", moverCarroComODedo, { passive: false });
+container.addEventListener("touchmove", moverCarroComODedo, { passive: false });
+
+// No celular não existe teclado, então a música começa no primeiro toque
+container.addEventListener("touchstart", comecarMusica, { once: true });
+
 // Faz TODOS os botões da página soltarem um "click" ao serem apertados
 for (const botao of document.querySelectorAll("button")) {
   botao.addEventListener("click", tocarClique);

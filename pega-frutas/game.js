@@ -141,6 +141,36 @@ document.addEventListener("keyup", (evento) => {
   if (evento.key === "ArrowRight") teclas.direita = false;
 });
 
+// --- Controles de toque (celular) ---
+// No celular o canvas aparece menor do que ele realmente é. Esta função
+// descobre em que ponto do JOGO o dedo encostou, mesmo com a tela encolhida.
+function xDoDedoNoCanvas(evento) {
+  const dedo = evento.touches[0];
+  const area = canvas.getBoundingClientRect();
+
+  // Regra de três: onde o dedo está na tela -> onde isso fica dentro do jogo
+  return (dedo.clientX - area.left) * (canvas.width / area.width);
+}
+
+// A cesta segue o dedo: ela fica sempre centralizada onde você está tocando.
+function moverCestaComODedo(evento) {
+  evento.preventDefault(); // impede a página de rolar enquanto você joga
+
+  cesta.x = xDoDedoNoCanvas(evento) - cesta.largura / 2;
+
+  // Não deixa a cesta sair da tela
+  if (cesta.x < 0) cesta.x = 0;
+  if (cesta.x + cesta.largura > canvas.width) {
+    cesta.x = canvas.width - cesta.largura;
+  }
+}
+
+canvas.addEventListener("touchstart", moverCestaComODedo, { passive: false });
+canvas.addEventListener("touchmove", moverCestaComODedo, { passive: false });
+
+// No celular não existe teclado, então a música começa no primeiro toque
+canvas.addEventListener("touchstart", iniciarMusicaDeFundo, { once: true });
+
 // --- DIFICULDADE CRESCENTE ---
 // Quanto mais pontos, mais rápido as frutas caem (até um limite).
 function velocidadeAtual() {

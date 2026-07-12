@@ -15,17 +15,30 @@ body {
 
 /* Onde o mundo 3D é desenhado */
 #cena3d {
-  width: 480px;
-  height: 560px;
+  /* No computador fica com 480px. No celular, encolhe para caber na tela,
+     mantendo o mesmo formato (a "aspect-ratio" segura a proporção). */
+  width: min(480px, 100vw - 24px);
+  aspect-ratio: 480 / 560;
   margin: 0 auto;
   border: 4px solid white;
   border-radius: 8px;
   overflow: hidden;
   background-color: #87ceeb;
+
+  /* Diz ao navegador que o dedo aqui é do jogo: não rola nem dá zoom */
+  touch-action: none;
 }
 
+/* O desenho 3D estica para preencher a caixa acima */
 #cena3d canvas {
   display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.dica {
+  color: #aaa;
+  font-size: 14px;
 }
 
 #fimDeJogo {

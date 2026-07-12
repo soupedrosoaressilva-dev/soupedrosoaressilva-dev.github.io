@@ -17,6 +17,18 @@ canvas {
   background-color: #87ceeb;
   border: 4px solid white;
   border-radius: 8px;
+
+  /* No celular o canvas encolhe para caber na tela, sem entortar o desenho */
+  max-width: 100%;
+  height: auto;
+
+  /* Diz ao navegador que o dedo aqui é do jogo: não rola nem dá zoom */
+  touch-action: none;
+}
+
+.dica {
+  color: #aaa;
+  font-size: 14px;
 }
 
 #fimDeJogo {

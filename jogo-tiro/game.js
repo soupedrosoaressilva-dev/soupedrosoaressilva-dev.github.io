@@ -249,6 +249,54 @@ document.addEventListener("keyup", (evento) => {
   if (evento.key === " ") teclas.atirar = false;
 });
 
+// --- Controles de toque (celular) ---
+// No celular o canvas aparece menor do que ele realmente é. Esta função
+// descobre em que ponto do JOGO o dedo encostou, mesmo com a tela encolhida.
+function xDoDedoNoCanvas(evento) {
+  const dedo = evento.touches[0];
+  const area = canvas.getBoundingClientRect();
+
+  // Regra de três: onde o dedo está na tela -> onde isso fica dentro do jogo
+  return (dedo.clientX - area.left) * (canvas.width / area.width);
+}
+
+// A nave segue o dedo: ela fica sempre centralizada onde você está tocando.
+function moverNaveComODedo(evento) {
+  evento.preventDefault(); // impede a página de rolar enquanto você joga
+
+  nave.x = xDoDedoNoCanvas(evento) - nave.largura / 2;
+
+  // Não deixa a nave sair da tela
+  if (nave.x < 0) nave.x = 0;
+  if (nave.x + nave.largura > canvas.width) {
+    nave.x = canvas.width - nave.largura;
+  }
+}
+
+// Encostou o dedo: a nave vai para lá e começa a atirar sozinha.
+canvas.addEventListener(
+  "touchstart",
+  (evento) => {
+    moverNaveComODedo(evento);
+    teclas.atirar = true;
+  },
+  { passive: false }
+);
+
+// Arrastou o dedo: a nave acompanha.
+canvas.addEventListener("touchmove", moverNaveComODedo, { passive: false });
+
+// Tirou o dedo da tela: para de atirar.
+canvas.addEventListener("touchend", () => {
+  teclas.atirar = false;
+});
+canvas.addEventListener("touchcancel", () => {
+  teclas.atirar = false;
+});
+
+// No celular não existe teclado, então a música começa no primeiro toque
+canvas.addEventListener("touchstart", iniciarMusicaDeFundo, { once: true });
+
 // --- FUNDO ESTRELADO ---
 // Sorteia um monte de estrelinhas espalhadas pela tela.
 function criarEstrelas() {
