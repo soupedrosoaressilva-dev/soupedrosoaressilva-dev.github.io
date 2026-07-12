@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1a1a2e;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+header h1 {
+  font-size: 42px;
+  margin-bottom: 8px;
+}
+
+header p {
+  color: #b8b8d0;
+  font-size: 18px;
+  margin-top: 0;
+}
+
+#lista-jogos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+.cartao {
+  background-color: #16213e;
+  border: 2px solid #0f3460;
+  border-radius: 12px;
+  padding: 24px;
+  width: 240px;
+  text-decoration: none;
+  color: white;
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.cartao:hover {
+  transform: translateY(-6px);
+  border-color: #e94560;
+}
+
+.cartao .emoji {
+  font-size: 56px;
+  margin-bottom: 12px;
+}
+
+.cartao h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+
+.cartao p {
+  color: #b8b8d0;
+  font-size: 15px;
+  margin: 0;
+}
+
+footer {
+  color: #6d6d8a;
+  margin-top: 40px;
+}

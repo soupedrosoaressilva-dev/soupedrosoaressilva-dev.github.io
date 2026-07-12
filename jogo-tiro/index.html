@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Nave Atiradora</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a id="voltarMenu" href="../index.html">⬅️ Voltar ao menu</a>
+
+  <h1>🚀 Nave Atiradora 👾</h1>
+  <p>Setas ⬅️ ➡️ para mover a nave e <strong>Espaço</strong> para atirar. Destrua os alienígenas antes que eles cheguem embaixo!</p>
+  <p class="dica">Aperte <strong>R</strong> a qualquer momento para reiniciar o jogo. Chegando a <strong>1000 pontos</strong>, só vêm naves fortes!</p>
+
+  <div id="info">
+    <span>Pontos: <span id="pontos">0</span></span>
+    <span>Vidas: <span id="vidas">3</span></span>
+    <span>Nível: <span id="nivel">1</span></span>
+    <span>Arma: <span id="arma">1</span></span>
+    <span>Recorde: <span id="recorde">0</span></span>
+  </div>
+
+  <canvas id="jogo" width="480" height="560"></canvas>
+
+  <div id="fimDeJogo" class="escondido">
+    <p>Fim de jogo!</p>
+    <p id="placarFinal"></p>
+    <button id="botaoReiniciar">Jogar de novo</button>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

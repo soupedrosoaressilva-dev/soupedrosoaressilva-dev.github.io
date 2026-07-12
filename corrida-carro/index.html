@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Corrida de Carro 3D</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a id="voltarMenu" href="../index.html">⬅️ Voltar ao menu</a>
+
+  <h1>🏎️ Corrida de Carro 3D 🚗</h1>
+  <p>Use as setas ⬅️ e ➡️ para desviar dos carros. Aperte Espaço para reiniciar. Quanto mais longe, mais rápido!</p>
+
+  <div id="info">
+    <span>Pontos: <span id="pontos">0</span></span>
+    <span>Velocidade: <span id="velocidade">1</span></span>
+    <span>Recorde: <span id="recorde">0</span></span>
+  </div>
+
+  <!-- É aqui dentro que o desenho 3D vai aparecer -->
+  <div id="cena3d"></div>
+
+  <div id="fimDeJogo" class="escondido">
+    <p>💥 Bateu!</p>
+    <p id="placarFinal"></p>
+    <button id="botaoReiniciar">Jogar de novo</button>
+  </div>
+
+  <!-- Three.js: a biblioteca que faz o 3D funcionar (carrega da internet) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

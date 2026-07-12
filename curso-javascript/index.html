@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Aula 1 - JavaScript</title>
+</head>
+<body>
+  <h1>Minha primeira página com JavaScript</h1>
+
+  <p id="mensagem">Clique no botão para ver o JavaScript funcionando.</p>
+
+  <button id="botao">Clique aqui</button>
+
+  <hr>
+
+  <h2>Calculadora simples</h2>
+  <input type="number" id="numeroA" placeholder="Primeiro número">
+  <input type="number" id="numeroB" placeholder="Segundo número">
+  <button id="somar">Somar</button>
+  <p id="resultado"></p>
+
+  <script>
+    // 1) Variáveis: guardam valores na memória
+    let nome = "aluno";
+    const anoAtual = 2026; // const não pode ser trocado depois
+
+    // 2) console.log mostra coisas no console do navegador (aperte F12)
+    console.log("Olá, " + nome + "! Estamos em " + anoAtual);
+
+    // 3) Pegando elementos do HTML pelo id
+    const botao = document.getElementById("botao");
+    const mensagem = document.getElementById("mensagem");
+
+    // 4) Contador que aumenta a cada clique
+    let cliques = 0;
+
+    // 5) Evento: executa a função quando o botão for clicado
+    botao.addEventListener("click", function () {
+      cliques = cliques + 1;
+      mensagem.textContent = "Você clicou " + cliques + " vez(es)!";
+    });
+
+    // 6) Função: um bloco de código com nome, que recebe valores e devolve um resultado
+    function somar(a, b) {
+      return a + b;
+    }
+
+    document.getElementById("somar").addEventListener("click", function () {
+      // O valor de um input sempre vem como texto, então Number() converte para número
+      const a = Number(document.getElementById("numeroA").value);
+      const b = Number(document.getElementById("numeroB").value);
+
+      const total = somar(a, b);
+
+      // if/else: toma decisões
+      if (total > 100) {
+        document.getElementById("resultado").textContent = total + " — que número grande!";
+      } else {
+        document.getElementById("resultado").textContent = "Resultado: " + total;
+      }
+    });
+
+    // 7) Repetição: o for repete um bloco várias vezes
+    for (let i = 1; i <= 3; i++) {
+      console.log("Contando: " + i);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Pega-Frutas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a id="voltarMenu" href="../index.html">⬅️ Voltar ao menu</a>
+
+  <h1>🍎 Pega-Frutas 🍌</h1>
+  <p>Use as setas ⬅️ e ➡️ do teclado para mover a cesta. Pegue as frutas e desvie das bombas 💣!</p>
+
+  <div id="info">
+    <span>Pontos: <span id="pontos">0</span></span>
+    <span>Vidas: <span id="vidas">5</span></span>
+    <span>Recorde: <span id="recorde">0</span></span>
+  </div>
+
+  <canvas id="jogo" width="480" height="500"></canvas>
+
+  <div id="fimDeJogo" class="escondido">
+    <p>Fim de jogo!</p>
+    <p id="placarFinal"></p>
+    <button id="botaoReiniciar">Jogar de novo</button>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
