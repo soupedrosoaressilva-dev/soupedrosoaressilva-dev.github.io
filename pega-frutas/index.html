@@ -9,25 +9,35 @@
 </head>
 <body>
 
-  <a id="voltarMenu" href="../index.html">⬅️ Voltar ao menu</a>
+  <!-- Barra de cima: o link do menu e o placar, tudo numa linha só -->
+  <header id="topo">
+    <a id="voltarMenu" href="../index.html">⬅️ Menu</a>
 
-  <h1>🍎 Pega-Frutas 🍌</h1>
-  <p>Use as setas ⬅️ e ➡️ do teclado para mover a cesta. Pegue as frutas e desvie das bombas 💣!</p>
-  <p class="dica">📱 No celular: arraste o dedo pela tela para mover a cesta.</p>
+    <div id="info">
+      <span>🎯 <span id="pontos">0</span></span>
+      <span>❤️ <span id="vidas">5</span></span>
+      <span>🏆 <span id="recorde">0</span></span>
+    </div>
+  </header>
 
-  <div id="info">
-    <span>Pontos: <span id="pontos">0</span></span>
-    <span>Vidas: <span id="vidas">5</span></span>
-    <span>Recorde: <span id="recorde">0</span></span>
-  </div>
+  <!-- O jogo ocupa todo o espaço que sobrar da tela -->
+  <main id="areaDoJogo">
+    <canvas id="jogo" width="480" height="500"></canvas>
 
-  <canvas id="jogo" width="480" height="500"></canvas>
+    <!-- Fica por CIMA do jogo quando você perde, então nunca sai cortado -->
+    <div id="fimDeJogo" class="escondido">
+      <p>Fim de jogo!</p>
+      <p id="placarFinal"></p>
+      <button id="botaoReiniciar">Jogar de novo</button>
+    </div>
+  </main>
 
-  <div id="fimDeJogo" class="escondido">
-    <p>Fim de jogo!</p>
-    <p id="placarFinal"></p>
-    <button id="botaoReiniciar">Jogar de novo</button>
-  </div>
+  <!-- Instruções: aparecem no computador e somem no celular, para o jogo
+       poder ocupar a tela inteira -->
+  <footer id="ajuda">
+    <p>Setas ⬅️ ➡️ movem a cesta. Pegue as frutas, desvie das bombas 💣 e aperte <strong>Espaço</strong> para reiniciar.</p>
+    <p>📱 No celular: arraste o dedo pela tela para mover a cesta.</p>
+  </footer>
 
   <script src="game.js"></script>
 </body>

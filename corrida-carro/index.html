@@ -9,26 +9,36 @@
 </head>
 <body>
 
-  <a id="voltarMenu" href="../index.html">⬅️ Voltar ao menu</a>
+  <!-- Barra de cima: o link do menu e o placar, tudo numa linha só -->
+  <header id="topo">
+    <a id="voltarMenu" href="../index.html">⬅️ Menu</a>
 
-  <h1>🏎️ Corrida de Carro 3D 🚗</h1>
-  <p>Use as setas ⬅️ e ➡️ para desviar dos carros. Aperte Espaço para reiniciar. Quanto mais longe, mais rápido!</p>
-  <p class="dica">📱 No celular: arraste o dedo para o lado e o carro troca de faixa.</p>
+    <div id="info">
+      <span>🎯 <span id="pontos">0</span></span>
+      <span>⚡ <span id="velocidade">1</span></span>
+      <span>🏆 <span id="recorde">0</span></span>
+    </div>
+  </header>
 
-  <div id="info">
-    <span>Pontos: <span id="pontos">0</span></span>
-    <span>Velocidade: <span id="velocidade">1</span></span>
-    <span>Recorde: <span id="recorde">0</span></span>
-  </div>
+  <!-- O jogo ocupa todo o espaço que sobrar da tela -->
+  <main id="areaDoJogo">
+    <!-- É aqui dentro que o desenho 3D vai aparecer -->
+    <div id="cena3d"></div>
 
-  <!-- É aqui dentro que o desenho 3D vai aparecer -->
-  <div id="cena3d"></div>
+    <!-- Fica por CIMA do jogo quando você bate, então nunca sai cortado -->
+    <div id="fimDeJogo" class="escondido">
+      <p>💥 Bateu!</p>
+      <p id="placarFinal"></p>
+      <button id="botaoReiniciar">Jogar de novo</button>
+    </div>
+  </main>
 
-  <div id="fimDeJogo" class="escondido">
-    <p>💥 Bateu!</p>
-    <p id="placarFinal"></p>
-    <button id="botaoReiniciar">Jogar de novo</button>
-  </div>
+  <!-- Instruções: aparecem no computador e somem no celular, para o jogo
+       poder ocupar a tela inteira -->
+  <footer id="ajuda">
+    <p>Setas ⬅️ ➡️ desviam dos carros e <strong>Espaço</strong> reinicia. Quanto mais longe, mais rápido!</p>
+    <p>📱 No celular: arraste o dedo para o lado e o carro troca de faixa.</p>
+  </footer>
 
   <!-- Three.js: a biblioteca que faz o 3D funcionar (carrega da internet) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

@@ -38,6 +38,26 @@ renderer.setSize(LARGURA, ALTURA);
 renderer.shadowMap.enabled = true;
 container.appendChild(renderer.domElement);
 
+// --- Faz o 3D ocupar todo o espaço disponível ---
+// A caixa do jogo muda de tamanho conforme a tela (celular pequeno, monitor
+// grandão, virar o celular de lado...). Aqui a gente manda o Three.js
+// desenhar exatamente no tamanho da caixa, para não ficar borrado.
+function ajustarTamanhoDaCena() {
+  const largura = container.clientWidth;
+  const altura = container.clientHeight;
+  if (largura === 0 || altura === 0) return;
+
+  // O "false" no final é para o Three.js não mexer no CSS: quem manda no
+  // tamanho na tela é a folha de estilo.
+  renderer.setSize(largura, altura, false);
+
+  camera.aspect = largura / altura;
+  camera.updateProjectionMatrix();
+}
+
+ajustarTamanhoDaCena();
+window.addEventListener("resize", ajustarTamanhoDaCena);
+
 // --- Luzes ---
 const luzAmbiente = new THREE.AmbientLight(0xffffff, 0.7);
 scene.add(luzAmbiente);

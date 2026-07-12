@@ -9,28 +9,40 @@
 </head>
 <body>
 
-  <a id="voltarMenu" href="../index.html">⬅️ Voltar ao menu</a>
+  <!-- Barra de cima: o link do menu e o placar, tudo numa linha só -->
+  <header id="topo">
+    <a id="voltarMenu" href="../index.html">⬅️ Menu</a>
 
-  <h1>🚀 Nave Atiradora 👾</h1>
-  <p>Setas ⬅️ ➡️ para mover a nave e <strong>Espaço</strong> para atirar. Destrua os alienígenas antes que eles cheguem embaixo!</p>
-  <p class="dica">📱 No celular: arraste o dedo para mover a nave — ela atira sozinha enquanto você estiver tocando na tela.</p>
-  <p class="dica">Aperte <strong>R</strong> a qualquer momento para reiniciar o jogo. Chegando a <strong>1000 pontos</strong>, só vêm naves fortes!</p>
+    <div id="info">
+      <span>🎯 <span id="pontos">0</span></span>
+      <span>❤️ <span id="vidas">3</span></span>
+      <span>🚦 <span id="nivel">1</span></span>
+      <span>🔫 <span id="arma">1</span></span>
+      <span>🏆 <span id="recorde">0</span></span>
+    </div>
+  </header>
 
-  <div id="info">
-    <span>Pontos: <span id="pontos">0</span></span>
-    <span>Vidas: <span id="vidas">3</span></span>
-    <span>Nível: <span id="nivel">1</span></span>
-    <span>Arma: <span id="arma">1</span></span>
-    <span>Recorde: <span id="recorde">0</span></span>
-  </div>
+  <!-- O jogo ocupa todo o espaço que sobrar da tela -->
+  <main id="areaDoJogo">
+    <canvas id="jogo" width="480" height="560"></canvas>
 
-  <canvas id="jogo" width="480" height="560"></canvas>
+    <!-- Fica por CIMA do jogo quando você perde, então nunca sai cortado -->
+    <div id="fimDeJogo" class="escondido">
+      <p>Fim de jogo!</p>
+      <p id="placarFinal"></p>
+      <button id="botaoReiniciar">Jogar de novo</button>
+    </div>
+  </main>
 
-  <div id="fimDeJogo" class="escondido">
-    <p>Fim de jogo!</p>
-    <p id="placarFinal"></p>
-    <button id="botaoReiniciar">Jogar de novo</button>
-  </div>
+  <!-- Instruções: aparecem no computador e somem no celular, para o jogo
+       poder ocupar a tela inteira -->
+  <footer id="ajuda">
+    <p>
+      Setas ⬅️ ➡️ movem a nave e <strong>Espaço</strong> atira.
+      <strong>R</strong> reinicia. Chegando a <strong>1000 pontos</strong>, só vêm naves fortes!
+    </p>
+    <p>📱 No celular: arraste o dedo para mover a nave — ela atira sozinha enquanto você toca na tela.</p>
+  </footer>
 
   <script src="game.js"></script>
 </body>
