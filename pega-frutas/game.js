@@ -172,12 +172,24 @@ canvas.addEventListener("touchmove", moverCestaComODedo, { passive: false });
 canvas.addEventListener("touchstart", iniciarMusicaDeFundo, { once: true });
 
 // --- DIFICULDADE CRESCENTE ---
-// Quanto mais pontos, mais rápido as frutas caem (até um limite).
+// As frutas vão caindo cada vez mais rápido conforme você faz pontos, MAS
+// só até um certo ponto: quando chegam na VELOCIDADE_MAXIMA, param de
+// acelerar. Sem esse limite o jogo viraria impossível e ninguém passaria dali.
+const VELOCIDADE_INICIAL = 1.8;
+const VELOCIDADE_MAXIMA = 3.6; // o teto: daqui não passa, por mais pontos que você faça
+const ACELERACAO_POR_PONTO = 0.02; // o quanto cada ponto deixa a queda mais rápida
+
 function velocidadeAtual() {
-  return Math.min(5, 1.8 + pontos * 0.03);
+  const velocidade = VELOCIDADE_INICIAL + pontos * ACELERACAO_POR_PONTO;
+
+  // O Math.min escolhe o MENOR entre os dois: enquanto a conta acima for
+  // menor que o teto, vale ela; quando passar do teto, vale o teto.
+  return Math.min(VELOCIDADE_MAXIMA, velocidade);
 }
 
 // Quanto mais pontos, menor o tempo entre um item e outro (até um limite).
+// Aqui o Math.max faz o contrário: segura o intervalo em 40 quadros, para as
+// frutas nunca virarem uma chuva impossível.
 function intervaloEntreItens() {
   return Math.max(40, 120 - pontos * 2);
 }
