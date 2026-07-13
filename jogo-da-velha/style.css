@@ -1,0 +1,213 @@
+* {
+  box-sizing: border-box;
+}
+
+/* A página ocupa exatamente a tela toda, sem sobrar nada para rolar.
+   O "100dvh" é a altura de verdade da tela do celular (já descontando a
+   barrinha do navegador, que aparece e some enquanto a gente rola). */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  background-color: #222;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+
+  /* O dedo aqui é do jogo: não rola a página nem dá zoom sem querer */
+  touch-action: manipulation;
+}
+
+/* --- Barra de cima: menu + placar --- */
+#topo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap; /* se não couber, quebra a linha em vez de cortar */
+  gap: 10px;
+  padding: 8px 10px;
+}
+
+#info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  font-size: 18px;
+  white-space: nowrap; /* não parte "😀 3" no meio */
+}
+
+#voltarMenu {
+  padding: 6px 12px;
+  font-size: 14px;
+  text-decoration: none;
+  color: white;
+  background-color: #0f3460;
+  border-radius: 6px;
+}
+
+#voltarMenu:hover {
+  background-color: #e94560;
+}
+
+/* --- A área do jogo pega TODO o espaço que sobrou da tela --- */
+#areaDoJogo {
+  flex: 1; /* "cresça e ocupe o resto" */
+  min-height: 0; /* sem isso o tabuleiro empurraria a página para fora da tela */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+#mesa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  /* O tabuleiro nunca passa da altura da tela: ele encolhe junto */
+  max-height: 100%;
+}
+
+#mensagem {
+  margin: 0;
+  font-size: 20px;
+  min-height: 26px; /* reserva o espaço, para o tabuleiro não pular de lugar */
+}
+
+/* --- O tabuleiro: 3 colunas e 3 linhas iguais --- */
+#tabuleiro {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 8px;
+
+  /* Sempre um quadrado que cabe na tela, seja no celular ou no computador.
+     "min()" escolhe o menor valor da lista: o que couber primeiro. */
+  width: min(80vw, 55vh, 420px);
+  height: min(80vw, 55vh, 420px);
+
+  padding: 8px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.casa {
+  /* Cada casinha é um botão, mas sem cara de botão */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background-color: #1b2a4a;
+  color: white;
+  cursor: pointer;
+
+  /* A letra cresce junto com a casinha ("cqw" não funciona aqui, então
+     usamos a largura da tela como referência) */
+  font-size: min(14vw, 9vh, 70px);
+  line-height: 1;
+}
+
+.casa:hover:not(:disabled) {
+  background-color: #26406f;
+}
+
+/* Casinha já jogada: não dá mais para clicar, mas continua bem visível */
+.casa:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+/* As três casinhas da linha vencedora piscam de verde */
+.casa.vencedora {
+  background-color: #2e7d32;
+}
+
+/* --- Botões em geral --- */
+button {
+  font-size: 18px;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* --- Tela de escolher o nível: um aviso POR CIMA do jogo --- */
+#telaEscolha {
+  position: absolute;
+  inset: 0; /* cola nos quatro cantos da área do jogo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+#telaEscolha h2 {
+  margin: 0 0 6px;
+  font-size: 24px;
+}
+
+.nivel {
+  width: 220px;
+  background-color: #0f3460;
+}
+
+.nivel:hover {
+  background-color: #e94560;
+}
+
+.dica {
+  margin: 8px 0 0;
+  color: #aaa;
+  font-size: 13px;
+}
+
+.escondido {
+  display: none !important;
+}
+
+/* --- Instruções lá embaixo --- */
+#ajuda {
+  color: #aaa;
+  font-size: 13px;
+  padding: 4px 10px 8px;
+}
+
+#ajuda p {
+  margin: 2px 0;
+}
+
+/* No celular (tela estreita) as instruções somem: assim o jogo fica
+   realmente com a tela toda. */
+@media (max-width: 700px) {
+  #ajuda {
+    display: none;
+  }
+
+  #info {
+    font-size: 16px;
+    gap: 12px;
+  }
+}

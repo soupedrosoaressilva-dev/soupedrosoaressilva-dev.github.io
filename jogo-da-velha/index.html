@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <!-- Faz a página se ajustar ao tamanho da tela do celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Velha</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Barra de cima: o link do menu e o placar, tudo numa linha só -->
+  <header id="topo">
+    <a id="voltarMenu" href="../index.html">⬅️ Menu</a>
+
+    <div id="info">
+      <span>😀 <span id="vitorias">0</span></span>
+      <span>🤝 <span id="empates">0</span></span>
+      <span>🤖 <span id="derrotas">0</span></span>
+    </div>
+  </header>
+
+  <!-- O jogo ocupa todo o espaço que sobrar da tela -->
+  <main id="areaDoJogo">
+
+    <div id="mesa">
+      <p id="mensagem">Sua vez! Você é o ❌</p>
+
+      <!-- As 9 casinhas do tabuleiro. O JavaScript cuida de preencher cada uma. -->
+      <div id="tabuleiro">
+        <button class="casa" data-casa="0"></button>
+        <button class="casa" data-casa="1"></button>
+        <button class="casa" data-casa="2"></button>
+        <button class="casa" data-casa="3"></button>
+        <button class="casa" data-casa="4"></button>
+        <button class="casa" data-casa="5"></button>
+        <button class="casa" data-casa="6"></button>
+        <button class="casa" data-casa="7"></button>
+        <button class="casa" data-casa="8"></button>
+      </div>
+
+      <button id="botaoReiniciar">Jogar de novo</button>
+    </div>
+
+    <!-- Tela de escolher a dificuldade: aparece POR CIMA do jogo antes de começar -->
+    <div id="telaEscolha">
+      <h2>Escolha o nível do robô</h2>
+
+      <button class="nivel" data-nivel="1">1 — Fácil 😀</button>
+      <button class="nivel" data-nivel="2">2 — Médio 😐</button>
+      <button class="nivel" data-nivel="3">3 — Difícil 😈</button>
+
+      <p class="dica">Você também pode apertar 1, 2 ou 3 no teclado.</p>
+    </div>
+
+  </main>
+
+  <!-- Instruções: aparecem no computador e somem no celular, para o jogo
+       poder ocupar a tela inteira -->
+  <footer id="ajuda">
+    <p>Clique numa casinha para jogar. Você é o ❌ e o robô é o ⭕.</p>
+    <p>Aperte <strong>Espaço</strong> para reiniciar e escolher o nível de novo.</p>
+  </footer>
+
+  <script src="game.js"></script>
+</body>
+</html>
