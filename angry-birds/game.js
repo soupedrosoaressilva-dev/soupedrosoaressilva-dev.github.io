@@ -191,6 +191,152 @@ const NIVEIS = [
       porco(760, CHAO - 224),
     ],
   },
+
+  // Nível 6: a torre altíssima (três andares, um porquinho em cada)
+  {
+    passaros: 5,
+    pecas: () => [
+      // O térreo é de PEDRA de propósito: se fosse de madeira, a torre inteira
+      // tombava num tiro só e o nível acabava rápido demais.
+      coluna("pedra", 640, CHAO),
+      coluna("pedra", 720, CHAO),
+      viga("madeira", 680, CHAO - 90, 110),
+      porco(680, CHAO),
+
+      // Primeiro andar (cada andar sobe 112: 90 da coluna + 22 da viga)
+      coluna("gelo", 640, CHAO - 112),
+      coluna("gelo", 720, CHAO - 112),
+      viga("gelo", 680, CHAO - 202, 110),
+      porco(680, CHAO - 112),
+
+      // Segundo andar
+      coluna("madeira", 640, CHAO - 224),
+      coluna("madeira", 720, CHAO - 224),
+      viga("madeira", 680, CHAO - 314, 110),
+      porco(680, CHAO - 224),
+
+      // O porquinho corajoso no topo de tudo
+      porco(680, CHAO - 336),
+
+      // E um esperto, escondido lá atrás numa casinha de pedra: quando a torre
+      // desabar, ele não vai estar embaixo dos escombros. Precisa de tiro só
+      // para ele.
+      coluna("pedra", 830, CHAO),
+      coluna("pedra", 890, CHAO),
+      viga("pedra", 860, CHAO - 90, 90),
+      porco(860, CHAO),
+    ],
+  },
+
+  // Nível 7: o bunker de pedra — uma caixa-forte fechada. Bater de frente não
+  // adianta muito: o jeito é acertar o teto de cima para baixo.
+  {
+    passaros: 5,
+    pecas: () => [
+      // As duas paredes, cada uma com duas pedras empilhadas
+      coluna("pedra", 620, CHAO),
+      coluna("pedra", 620, CHAO - 90),
+      coluna("pedra", 820, CHAO),
+      coluna("pedra", 820, CHAO - 90),
+
+      // O teto, deitado em cima das duas paredes
+      viga("pedra", 720, CHAO - 180, 220),
+
+      // Os dois porquinhos escondidos lá dentro
+      porco(680, CHAO),
+      porco(760, CHAO),
+
+      // E um sentado no telhado, de bobeira
+      porco(720, CHAO - 202),
+    ],
+  },
+
+  // Nível 8: as três casinhas, cada uma numa distância. Aqui não adianta força:
+  // é pontaria!
+  {
+    passaros: 5,
+    pecas: () => [
+      // A casinha de madeira, bem na frente
+      coluna("madeira", 450, CHAO),
+      coluna("madeira", 510, CHAO),
+      viga("madeira", 480, CHAO - 90, 90),
+      porco(480, CHAO),
+
+      // A casinha de gelo, no meio, com um porquinho no telhado
+      coluna("gelo", 650, CHAO),
+      coluna("gelo", 710, CHAO),
+      viga("gelo", 680, CHAO - 90, 90),
+      porco(680, CHAO),
+      porco(680, CHAO - 112),
+
+      // A casinha de pedra, lá no fundo
+      coluna("pedra", 850, CHAO),
+      coluna("pedra", 910, CHAO),
+      viga("pedra", 880, CHAO - 90, 90),
+      porco(880, CHAO),
+    ],
+  },
+
+  // Nível 9: a pirâmide de gelo — larga embaixo e fininha em cima
+  {
+    passaros: 5,
+    pecas: () => [
+      // A base larga (colunas de 120 em 120, vigas de 116)
+      coluna("gelo", 560, CHAO),
+      coluna("gelo", 680, CHAO),
+      coluna("gelo", 800, CHAO),
+      viga("madeira", 620, CHAO - 90, 116),
+      viga("madeira", 740, CHAO - 90, 116),
+      porco(620, CHAO),
+      porco(740, CHAO),
+
+      // O meio, mais estreito
+      coluna("gelo", 620, CHAO - 112),
+      coluna("gelo", 740, CHAO - 112),
+      viga("pedra", 680, CHAO - 202, 116),
+      porco(680, CHAO - 112),
+
+      // O biquinho da pirâmide
+      bloco("madeira", 680, CHAO - 224, 40, 40),
+      porco(680, CHAO - 264),
+    ],
+  },
+
+  // Nível 10: A FORTALEZA FINAL. Muralha de três pedras na frente, para
+  // obrigar o tiro em arco, e um castelo de três andares atrás.
+  {
+    passaros: 6,
+    pecas: () => [
+      // A muralha altona (pedras empilhadas, uma em cima da outra)
+      coluna("pedra", 520, CHAO),
+      coluna("pedra", 520, CHAO - 90),
+      coluna("pedra", 520, CHAO - 180),
+
+      // Térreo (colunas de 120 em 120, vigas de 116)
+      coluna("pedra", 620, CHAO),
+      coluna("pedra", 740, CHAO),
+      coluna("pedra", 860, CHAO),
+      viga("madeira", 680, CHAO - 90, 116),
+      viga("madeira", 800, CHAO - 90, 116),
+      porco(680, CHAO),
+      porco(800, CHAO),
+
+      // Primeiro andar (colunas de 100 em 100, vigas de 96)
+      coluna("madeira", 640, CHAO - 112),
+      coluna("madeira", 740, CHAO - 112),
+      coluna("madeira", 840, CHAO - 112),
+      viga("pedra", 690, CHAO - 202, 96),
+      viga("pedra", 790, CHAO - 202, 96),
+      porco(690, CHAO - 112),
+      porco(790, CHAO - 112),
+
+      // A torre do rei, lá em cima
+      coluna("gelo", 690, CHAO - 224),
+      coluna("gelo", 790, CHAO - 224),
+      viga("gelo", 740, CHAO - 314, 96),
+      porco(740, CHAO - 336),
+    ],
+  },
 ];
 
 // --- PONTOS ---
