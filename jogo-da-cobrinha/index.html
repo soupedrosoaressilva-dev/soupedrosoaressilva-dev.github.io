@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <!-- Faz a página se ajustar ao tamanho da tela do celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Cobrinha</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Barra de cima: o link do menu e o placar, tudo numa linha só -->
+  <header id="topo">
+    <a id="voltarMenu" href="../index.html">⬅️ Menu</a>
+
+    <div id="info">
+      <span>🍎 <span id="pontos">0</span></span>
+      <span>🏆 <span id="recorde">0</span></span>
+    </div>
+  </header>
+
+  <!-- O jogo ocupa todo o espaço que sobrar da tela -->
+  <main id="areaDoJogo">
+
+    <!-- O tabuleiro é sempre 20x20 casinhas de 20 pixels = 400x400.
+         O CSS depois estica ou encolhe isso para caber na tela. -->
+    <canvas id="jogo" width="400" height="400"></canvas>
+
+    <!-- Tela de fim de jogo: aparece POR CIMA do tabuleiro -->
+    <div id="fimDeJogo" class="escondido">
+      <h2>Fim de jogo! 🐍</h2>
+      <p id="placarFinal"></p>
+      <button id="botaoReiniciar">Jogar de novo</button>
+    </div>
+
+  </main>
+
+  <!-- Instruções: aparecem no computador e somem no celular, para o jogo
+       poder ocupar a tela inteira -->
+  <footer id="ajuda">
+    <p>Use as <strong>setas</strong> (ou W A S D) para virar a cobrinha. No celular, deslize o dedo.</p>
+    <p>Coma as frutas para crescer. Não bata na parede nem no próprio rabo!</p>
+    <p>Aperte <strong>Espaço</strong> para reiniciar.</p>
+  </footer>
+
+  <script src="game.js"></script>
+</body>
+</html>
