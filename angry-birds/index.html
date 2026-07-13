@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <!-- Faz a página se ajustar ao tamanho da tela do celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passarinhos Bravos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Barra de cima: o link do menu e o placar, tudo numa linha só -->
+  <header id="topo">
+    <a id="voltarMenu" href="../index.html">⬅️ Menu</a>
+
+    <div id="info">
+      <span>🏰 Nível <span id="nivel">1</span></span>
+      <span>🐦 <span id="passarosRestantes">0</span></span>
+      <span>⭐ <span id="pontos">0</span></span>
+      <span>🏆 <span id="recorde">0</span></span>
+    </div>
+  </header>
+
+  <!-- O jogo ocupa todo o espaço que sobrar da tela -->
+  <main id="areaDoJogo">
+
+    <!-- O cenário é sempre 960x540. O CSS depois estica ou encolhe isso
+         para caber na tela, sem deformar (o desenho continua igualzinho). -->
+    <canvas id="jogo" width="960" height="540"></canvas>
+
+    <!-- Telas de aviso: aparecem POR CIMA do cenário -->
+    <div id="telaAviso" class="escondido">
+      <h2 id="tituloAviso">Nível concluído! 🎉</h2>
+      <p id="textoAviso"></p>
+      <button id="botaoAviso">Continuar</button>
+    </div>
+
+  </main>
+
+  <!-- Instruções: aparecem no computador e somem no celular, para o jogo
+       poder ocupar a tela inteira -->
+  <footer id="ajuda">
+    <p><strong>Puxe o passarinho</strong> para trás com o mouse (ou o dedo) e solte para atirar.</p>
+    <p>Derrube todos os <strong>porquinhos</strong> antes de acabarem os passarinhos!</p>
+    <p>Aperte <strong>Espaço</strong> para reiniciar o nível.</p>
+  </footer>
+
+  <script src="game.js"></script>
+</body>
+</html>
